@@ -1,8 +1,8 @@
 <template>
     <section>
         <b-field>
-            <button class="button is-primary is-medium" @click="open">
-                Calculate!
+            <button class="button is-light is-outlined is-large" @click="open">
+                <p class="btn-txt"> Calculate! </p>
             </button>
         </b-field>
          <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
@@ -26,3 +26,9 @@
         }
     }
 </script>
+
+<style scoped> 
+    .btn-txt {
+        font-weight: 500;
+    }
+</style> 

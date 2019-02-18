@@ -12,4 +12,4 @@ new Vue({
 }).$mount('#app')
 
 Vue.use(Buefy);
-Vue.use(VueNumberInput);
+Vue.component(VueNumberInput.name, VueNumberInput);

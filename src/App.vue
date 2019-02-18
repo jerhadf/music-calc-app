@@ -26,7 +26,7 @@
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span id="github-name">vintners</span>
+                    <span id="github-name">jeremy</span>
                   </a>
                 </span>
               </div>
@@ -41,6 +41,7 @@
           <AppTitle title="The Music-Time Calculator"/>
           <SongInput input_msg="Enter your song!"/>
           <ArtistInput input_msg="Enter the artist!"/>
+          <TimeText input_msg="How much time? (minutes)"/>
           <TimeInput msg="How much time do you have>"/>
           <Calculate/>
         </div>
@@ -72,6 +73,7 @@
   import SongInput from "./components/SongInput.vue";
   import ArtistInput from "./components/ArtistInput.vue"; 
   import Calculate from "./components/Calculate.vue";
+  import TimeText from "./components/TimeText.vue";
 
   export default {
     name: "app",
@@ -80,7 +82,8 @@
       AppTitle, 
       SongInput, 
       ArtistInput, 
-      Calculate
+      Calculate, 
+      TimeText
     }
   };
 </script>
