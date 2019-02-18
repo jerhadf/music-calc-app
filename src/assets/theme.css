@@ -1,0 +1,21 @@
+/* Buttons
+--------------------------- */
+.button { 
+    background: #000000; 
+    color: #000000 
+}
+
+/* Forms
+--------------------------- */
+.form-control {
+  border-radius: 2px;
+  border: 1px solid #ccc;
+}
+
+.form-control:focus,
+.form-control:active {
+  outline: none;
+  box-shadow: none;
+  background: #ccc;
+  border: 1px solid #000;
+}
