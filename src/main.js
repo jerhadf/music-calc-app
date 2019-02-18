@@ -3,6 +3,7 @@ import App from './App.vue'
 import './../node_modules/bulma/css/bulma.css'
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
+import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 Vue.config.productionTip = false
 
@@ -11,3 +12,4 @@ new Vue({
 }).$mount('#app')
 
 Vue.use(Buefy);
+Vue.use(VueNumberInput);

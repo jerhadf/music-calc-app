@@ -1,13 +1,40 @@
 <template>
-    <b-timepicker v-model="time" inline></b-timepicker>
+  <div class="center">
+    <number-input 
+    class="minutes"
+    v-model="value" 
+    :min="1" 
+    :max="10" 
+    :placeholder="msg" 
+    inline controls>
+    </number-input>
+  </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                time: new Date()
-            }
-        }
-    }
+  export default {
+    name: 'TimeInput',
+    props: {
+        msg: String
+    },
+    data() {
+      return {
+        value: 1,
+      };
+    },
+  };
 </script>
+
+<style scoped>
+
+.center {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.minutes {
+    margin: 50px;
+}
+
+</style>

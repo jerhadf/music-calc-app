@@ -5,12 +5,12 @@
               <!-- Calculator image -->
               <img
                 class="is-rounded"
-                style="max-width: 150px;"
+                style="max-width: 130px;"
                 src="..\assets\calculator_color.png"
               >
             </figure>
         </div>
-        <h1 class="title"> {{ title }} </h1>
+        <h2 class="title"> {{ title }} </h2>
         <p class="subtitle">
             Find the <strong>time you need</strong> to listen to songs!
         </p>

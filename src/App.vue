@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- An imposing hero banner to showcase something, wraps entire site structure -->
-    <section class="hero is-primary is-bold is-fullheight">
+    <section class="hero is-bold is-primary is-fullheight">
       <!-- Hero head: will stick at the top -->
       <div class="hero-head">
         <nav class="navbar">
@@ -18,11 +18,6 @@
                   <i class="fas fa-calculator fa-3x"></i>
                 </span>
               </a>
-              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
             </div>
             <div id="navbarMenuHeroA" class="navbar-menu">
               <div class="navbar-end">
@@ -46,8 +41,8 @@
           <AppTitle title="The Music-Time Calculator"/>
           <SongInput input_msg="Enter your song!"/>
           <ArtistInput input_msg="Enter the artist!"/>
-          <TimeInput /> 
-          <Calculate />
+          <TimeInput msg="How much time do you have>"/>
+          <Calculate/>
         </div>
       </div>
 
@@ -72,14 +67,16 @@
 
 <script>
   // import needed components
+  import TimeInput from "./components/TimeInput.vue"; 
   import AppTitle from "./components/AppTitle.vue";
   import SongInput from "./components/SongInput.vue";
   import ArtistInput from "./components/ArtistInput.vue"; 
-  import Calculate from "./components/Calculate.vue"; 
+  import Calculate from "./components/Calculate.vue";
 
   export default {
     name: "app",
     components: {
+      TimeInput,
       AppTitle, 
       SongInput, 
       ArtistInput, 
@@ -90,6 +87,7 @@
 
 <style>
 @import '../public/debug.css';
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -97,13 +95,25 @@
   text-align: center;
 }
 
-.navbar-item {
-  margin-top: 6px;
+.hero-head {
+  position: relative;
+  top: 5px;
 }
+
+.hero-body {
+  position: relative;
+  top: -80px;
+}
+
 .fa-clock {
   margin-left: 20px;
 }
 .fa-calculator {
   margin-left: 8px;
 }
+
+.time-input {
+  padding-bottom: 10px; 
+}
+    
 </style>
