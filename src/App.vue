@@ -46,6 +46,7 @@
           <AppTitle title="The Music-Time Calculator"/>
           <SongInput input_msg="Enter your song!"/>
           <ArtistInput input_msg="Enter the artist!"/>
+          <TimeInput /> 
           <Calculate />
         </div>
       </div>
@@ -56,10 +57,10 @@
           <div class="container">
             <ul>
               <li class="is-active">
-                <a>How many times could I listen to {song} in X minutes?</a>
+                <a>How many times could I listen to {{song}} by {{artist}} in X minutes?</a>
               </li>
               <li>
-                <a>How many minutes to listen to {song} X times?</a>
+                <a>How many minutes to listen to {{song}} by {{artist}} X times?</a>
               </li>
             </ul>
           </div>
@@ -70,20 +71,21 @@
 </template>
 
 <script>
-import AppTitle from "./components/AppTitle.vue";
-import SongInput from "./components/SongInput.vue";
-import ArtistInput from "./components/ArtistInput.vue"; 
-import Calculate from "./components/Calculate.vue"; 
+  // import needed components
+  import AppTitle from "./components/AppTitle.vue";
+  import SongInput from "./components/SongInput.vue";
+  import ArtistInput from "./components/ArtistInput.vue"; 
+  import Calculate from "./components/Calculate.vue"; 
 
-export default {
-  name: "app",
-  components: {
-    AppTitle, 
-    SongInput, 
-    ArtistInput, 
-    Calculate
-  }
-};
+  export default {
+    name: "app",
+    components: {
+      AppTitle, 
+      SongInput, 
+      ArtistInput, 
+      Calculate
+    }
+  };
 </script>
 
 <style>
