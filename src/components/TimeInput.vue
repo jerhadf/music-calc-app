@@ -34,7 +34,7 @@
 }
 
 .minutes {
-    margin: 50px;
+    margin-bottom: 10px;
 }
 
 </style>
