@@ -12,7 +12,7 @@
                   <i class="fas fa-music fa-3x"></i>
                 </span>
                 <span>
-                  <i class="fas fa-clock fa-3x"></i>
+                  <i id="clock-icon" class="fas fa-clock fa-3x"></i>
                 </span>
                 <span>
                   <i class="fas fa-calculator fa-3x"></i>
@@ -39,10 +39,10 @@
       <div class="hero-body">
         <div class="container">
           <AppTitle title="The Music-Time Calculator"/>
-          <SongInput input_msg="Enter your song!"/>
-          <ArtistInput input_msg="Enter the artist!"/>
-          <TimeText input_msg="How much time? (minutes)"/>
-          <TimeInput msg="How much time do you have>"/>
+          <SongInput v-model.trim="song" input_msg="Enter your song!"/>
+          <ArtistInput v-model.trim="artist" input_msg="Enter the artist!"/>
+          <TimeText v-model.trim="time" input_msg="How much time? (minutes)"/>
+          <!-- <TimeInput msg="How much time do you have>"/> -->
           <Calculate/>
         </div>
       </div>
@@ -53,10 +53,10 @@
           <div class="container">
             <ul>
               <li class="is-active">
-                <a>How many times could I listen to {{song}} by {{artist}} in X minutes?</a>
+                <a>How many times could I listen to {{song}} by {{artist}} in {{time}} minutes?</a>
               </li>
               <li>
-                <a>How many minutes to listen to {{song}} by {{artist}} X times?</a>
+                <a>How many minutes to listen to {{song}} by {{artist}} {{count}} times?</a>
               </li>
             </ul>
           </div>
@@ -84,8 +84,17 @@
       ArtistInput, 
       Calculate, 
       TimeText
+    }, 
+    data() {
+      return {
+        artist: '[artist]',
+        time: 'X',
+        count: 'X', 
+        song: '[song]'
     }
+  }
   };
+
 </script>
 
 <style>
@@ -105,10 +114,10 @@
 
 .hero-body {
   position: relative;
-  top: -80px;
+  top: -50px;
 }
 
-.fa-clock {
+#clock-icon {
   margin-left: 20px;
 }
 .fa-calculator {
