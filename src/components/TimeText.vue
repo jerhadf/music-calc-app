@@ -9,6 +9,8 @@
           :placeholder="input_msg"
           width="100"
           maxlength="10"
+          min="0" max="23"
+          oninput="this.value=this.value.replace(/[^0-9]/g,'');"
         >
         <span class="icon is-small is-left">
           <i class="fas fa-clock"></i>
