@@ -1,6 +1,6 @@
 <template>
   <!-- Below: If "isActive" is true, bind the class "active" to this element -->
-  <li v-on:click="isActive = !isActive" v-bind:class="{ transition : isActive }">
+  <li id="menu-item" v-on:click="toggleActive" v-bind:class="{ active : isActive }">
     <a>How many times could I listen to {{song}} by {{artist}} in {{time}} minutes?</a>
   </li>
 </template>
@@ -18,16 +18,21 @@ export default {
     return {
       isActive: true
     };
+  }, 
+  methods: {
+    toggleActive: function() { 
+      this.isActive = !this.isActive
+    }
   }
 };
 </script>
 
 <style scoped>
-li {
-  transition: background-color 2s linear, font-weight 2s linear; 
+#menu-item {
+  transition: background-color 10s, font-weight 10s; 
 }
 
-li.transition {
+#menu-item.active {
   font-weight: bolder;
   background-color: #000000;
 }
