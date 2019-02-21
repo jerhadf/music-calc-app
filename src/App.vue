@@ -52,12 +52,8 @@
         <nav class="tabs is-boxed is-fullwidth">
           <div class="container">
             <ul>
-              <li class="is-active">
-                <a>How many times could I listen to {{song}} by {{artist}} in {{time}} minutes?</a>
-              </li>
-              <li>
-                <a>How many minutes to listen to {{song}} by {{artist}} {{count}} times?</a>
-              </li>
+              <CountItem :song="song" :artist="artist" :count="count"/>
+              <TimeItem :song="song" :artist="artist" :time="time"/>
             </ul>
           </div>
         </nav>
@@ -67,38 +63,39 @@
 </template>
 
 <script>
-  // import needed components
-  import TimeInput from "./components/TimeInput.vue"; 
-  import AppTitle from "./components/AppTitle.vue";
-  import SongInput from "./components/SongInput.vue";
-  import ArtistInput from "./components/ArtistInput.vue"; 
-  import Calculate from "./components/Calculate.vue";
-  import TimeText from "./components/TimeText.vue";
+// import needed components
+import AppTitle from "./components/AppTitle.vue";
+import SongInput from "./components/SongInput.vue";
+import ArtistInput from "./components/ArtistInput.vue";
+import Calculate from "./components/Calculate.vue";
+import TimeText from "./components/TimeText.vue";
+import CountItem from "./components/CountItem.vue";
+import TimeItem from "./components/CountItem.vue";
 
-  export default {
-    name: "app",
-    components: {
-      TimeInput,
-      AppTitle, 
-      SongInput, 
-      ArtistInput, 
-      Calculate, 
-      TimeText
-    }, 
-    data() {
-      return {
-        artist: '[artist]',
-        time: 'X',
-        count: 'X', 
-        song: '[song]'
-    }
+export default {
+  name: "app",
+  components: {
+    AppTitle,
+    SongInput,
+    ArtistInput,
+    Calculate,
+    TimeText,
+    CountItem,
+    TimeItem
+  },
+  data() {
+    return {
+      artist: "[artist]",
+      time: "X",
+      count: "X",
+      song: "[song]"
+    };
   }
-  };
-
+};
 </script>
 
 <style>
-@import '../public/debug.css';
+@import "../public/debug.css";
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -125,7 +122,6 @@
 }
 
 .time-input {
-  padding-bottom: 10px; 
+  padding-bottom: 10px;
 }
-    
 </style>
