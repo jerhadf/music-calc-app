@@ -41,19 +41,21 @@
           <AppTitle title="The Music-Time Calculator"/>
           <SongInput v-model.trim="song" input_msg="Enter your song!"/>
           <ArtistInput v-model.trim="artist" input_msg="Enter the artist!"/>
-          <TimeText v-model.trim="time" input_msg="How much time? (minutes)"/>
+          <transition name="slide">
+            <TimeInput v-if="show_time" input_msg="How much time? (minutes)"/>
+          </transition>
+          <transition name="slide">
+            <CountInput v-if="show_count" input_msg="How many times to listen?"/>
+          </transition>
           <Calculate/>
         </div>
       </div>
-
+ 
       <!-- Hero footer: will stick at the bottom -->
       <div class="hero-foot">
         <nav class="tabs is-boxed is-fullwidth">
           <div class="container">
-            <ul>
-              <CountItem :song="song" :artist="artist" :count="count"/>
-              <TimeItem :song="song" :artist="artist" :time="time"/>
-            </ul>
+            <MenuItem v-on:selected="changeSelected" :song="song" :artist="artist" :time="time" :count="count"/>
           </div>
         </nav>
       </div>
@@ -67,9 +69,9 @@ import AppTitle from "./components/AppTitle.vue";
 import SongInput from "./components/SongInput.vue";
 import ArtistInput from "./components/ArtistInput.vue";
 import Calculate from "./components/Calculate.vue";
-import TimeText from "./components/TimeText.vue";
-import CountItem from "./components/CountItem.vue";
-import TimeItem from "./components/CountItem.vue";
+import TimeInput from "./components/TimeInput.vue";
+import CountInput from "./components/CountInput.vue";
+import MenuItem from "./components/MenuItem.vue";
 
 export default {
   name: "app",
@@ -78,17 +80,25 @@ export default {
     SongInput,
     ArtistInput,
     Calculate,
-    TimeText,
-    CountItem,
-    TimeItem
+    TimeInput,
+    MenuItem, 
+    CountInput
   },
   data() {
     return {
       artist: "[artist]",
       time: "X",
       count: "X",
-      song: "[song]"
+      song: "[song]",
+      show_time: true, 
+      show_count: false
     };
+  }, 
+  methods: {
+    changeSelected: function () { 
+      this.show_time = !this.show_time; 
+      this.show_count = !this.show_count;
+    }
   }
 };
 </script>
@@ -116,11 +126,20 @@ export default {
 #clock-icon {
   margin-left: 20px;
 }
+
 .fa-calculator {
   margin-left: 8px;
 }
 
-.time-input {
-  padding-bottom: 10px;
+.slide-leave-active,
+.slide-enter-active {
+  transition: 1s;
 }
+.slide-enter {
+  transform: translate(100%, 0);
+}
+.slide-leave-to {
+  transform: translate(-100%, 0);
+}
+
 </style>

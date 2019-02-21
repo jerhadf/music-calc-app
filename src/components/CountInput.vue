@@ -1,5 +1,5 @@
 <template>
-  <div class="time-text">
+  <div class="count-input">
     <div class="field">
       <div class="control has-icons-left">
         <input
@@ -13,17 +13,16 @@
           oninput="this.value=this.value.replace(/[^0-9]/g,'');"
         >
         <span class="icon is-small is-left">
-          <i class="fas fa-clock"></i>
+          <i class="fas fa-headphones"></i>
         </span>
       </div>
     </div>
   </div>
 </template>
 
-<script src="input_filter.js" type="text/javascript"></script> 
 <script>
 export default {
-  name: "TimeText",
+  name: "CountInput",
   props: {
     input_msg: String
   }

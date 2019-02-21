@@ -1,40 +1,42 @@
 <template>
-  <div class="center">
-    <number-input 
-    class="minutes"
-    v-model="value" 
-    :min="1" 
-    :max="10" 
-    :placeholder="msg" 
-    inline controls>
-    </number-input>
+  <div class="time-input">
+    <div class="field">
+      <div class="control has-icons-left">
+        <input
+          @input="$emit('input',$event.target.value)"
+          class="input is-large is-rounded is-info"
+          type="number"
+          :placeholder="input_msg"
+          width="100"
+          maxlength="10"
+          min="0" max="23"
+          oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+        >
+        <span class="icon is-small is-left">
+          <i class="fas fa-clock"></i>
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'TimeInput',
-    props: {
-        msg: String
-    },
-    data() {
-      return {
-        value: 1,
-      };
-    },
-  };
+export default {
+  name: "TimeInput",
+  props: {
+    input_msg: String
+  }
+};
 </script>
 
-<style scoped>
-
-.center {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style>
+.control {
+  margin: 15px;
+  padding-bottom: 15px;
+  position: relative;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
 }
-
-.minutes {
-    margin-bottom: 10px;
-}
-
 </style>
