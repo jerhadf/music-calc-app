@@ -1,6 +1,6 @@
 <template>
   <!-- Below: If "isActive" is true, bind the class "active" to this element -->
-  <li v-on:click="isActive = !isActive" v-bind:class="{ active_li: isActive }">
+  <li v-on:click="isActive = !isActive" v-bind:class="{ transition : isActive }">
     <a>How many times could I listen to {{song}} by {{artist}} in {{time}} minutes?</a>
   </li>
 </template>
@@ -23,7 +23,11 @@ export default {
 </script>
 
 <style scoped>
-.active_li {
+li {
+  transition: background-color 2s linear, font-weight 2s linear; 
+}
+
+li.transition {
   font-weight: bolder;
   background-color: #000000;
 }

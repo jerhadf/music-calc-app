@@ -42,7 +42,6 @@
           <SongInput v-model.trim="song" input_msg="Enter your song!"/>
           <ArtistInput v-model.trim="artist" input_msg="Enter the artist!"/>
           <TimeText v-model.trim="time" input_msg="How much time? (minutes)"/>
-          <!-- <TimeInput msg="How much time do you have>"/> -->
           <Calculate/>
         </div>
       </div>
