@@ -42,18 +42,28 @@
           <SongInput v-model.trim="song" input_msg="Enter your song!"/>
           <ArtistInput v-model.trim="artist" input_msg="Enter the artist!"/>
           <transition name="slide">
-            <TimeInput v-model.trim="time" v-if="show_time" input_msg="How much time? (minutes)"/> 
-            <CountInput v-model.trim="count" v-if="show_count" input_msg="How many times to listen?"/>
+            <TimeInput v-model.trim="time" v-if="show_time" input_msg="How much time? (minutes)"/>
+            <CountInput
+              v-model.trim="count"
+              v-if="show_count"
+              input_msg="How many times to listen?"
+            />
           </transition>
-          <Calculate/>
+          <Calculate @click="callSpotifyAPI"/>
         </div>
       </div>
- 
+
       <!-- Hero footer: will stick at the bottom -->
       <div class="hero-foot">
         <nav class="tabs is-boxed is-fullwidth">
           <div class="container">
-            <MenuItem v-on:selected="changeSelected" :song="song" :artist="artist" :time="time" :count="count"/>
+            <MenuItem
+              v-on:selected="changeSelected"
+              :song="song"
+              :artist="artist"
+              :time="time"
+              :count="count"
+            />
           </div>
         </nav>
       </div>
@@ -79,7 +89,7 @@ export default {
     ArtistInput,
     Calculate,
     TimeInput,
-    MenuItem, 
+    MenuItem,
     CountInput
   },
   data() {
@@ -88,14 +98,31 @@ export default {
       time: "X",
       count: "X",
       song: "[song]",
-      show_time: true, 
-      show_count: false
+      show_time: true,
+      show_count: false,
+      API_url: "http://localhost:3100"
     };
-  }, 
+  },
   methods: {
-    changeSelected: function () { 
-      this.show_time = !this.show_time; 
+    changeSelected: function() {
+      this.show_time = !this.show_time;
       this.show_count = !this.show_count;
+    },
+    callSpotifyAPI: function() {
+      // process artist & song name
+      let artist = this.artist.replace(/ /g, "_");
+      let track = this.song.replace(/ /g, "_");
+
+      $.ajax({
+        url: `${this.API_url}/search?artist=${this.artist}&track=${this.track}`,
+        method: "GET",
+        success: function(data) {
+          console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert("error " + textStatus + " " + errorThrown);
+        }
+      });
     }
   }
 };
@@ -139,5 +166,4 @@ export default {
 .slide-leave-to {
   transform: translate(-100%, 0);
 }
-
 </style>

@@ -8,10 +8,6 @@ var express = require("express");
 
 const app = express();
 
-app.get("/url", (req, res, next) => {
-  res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
-});
-
 app.use(express.static("public"));
 
 const port = process.env.PORT || 3100;
