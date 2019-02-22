@@ -42,10 +42,8 @@
           <SongInput v-model.trim="song" input_msg="Enter your song!"/>
           <ArtistInput v-model.trim="artist" input_msg="Enter the artist!"/>
           <transition name="slide">
-            <TimeInput v-if="show_time" input_msg="How much time? (minutes)"/>
-          </transition>
-          <transition name="slide">
-            <CountInput v-if="show_count" input_msg="How many times to listen?"/>
+            <TimeInput v-model.trim="time" v-if="show_time" input_msg="How much time? (minutes)"/> 
+            <CountInput v-model.trim="count" v-if="show_count" input_msg="How many times to listen?"/>
           </transition>
           <Calculate/>
         </div>

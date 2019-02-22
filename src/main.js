@@ -3,7 +3,8 @@ import App from './App.vue'
 import './../node_modules/bulma/css/bulma.css'
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
-import VueNumberInput from '@chenfengyuan/vue-number-input';
+import VueSpotify from 'vue-spotify'
+import Spotify from 'spotify-web-api-node'
 
 Vue.config.productionTip = false
 
@@ -12,4 +13,4 @@ new Vue({
 }).$mount('#app')
 
 Vue.use(Buefy);
-Vue.component(VueNumberInput.name, VueNumberInput);
+Vue.use(VueSpotify, new Spotify())

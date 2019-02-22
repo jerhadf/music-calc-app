@@ -5,13 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint", 
+    "start": "node server.js"
   },
   "dependencies": {
     "@chenfengyuan/vue-number-input": "^1.1.0",
+    "axios": "^0.18.0",
     "buefy": "^0.7.2",
     "bulma": "^0.7.4",
     "element-ui": "^2.5.4",
+    "express": "^4.16.4",
     "spotify-web-api-node": "^4.0.0",
     "vue": "^2.6.6",
     "vue-spotify": "^1.0.2"

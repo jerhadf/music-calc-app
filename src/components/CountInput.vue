@@ -1,22 +1,18 @@
 <template>
-  <div class="count-input">
-    <div class="field">
-      <div class="control has-icons-left">
-        <input
-          @input="$emit('input',$event.target.value)"
-          class="input is-large is-rounded is-info"
-          type="number"
-          :placeholder="input_msg"
-          width="100"
-          maxlength="10"
-          min="0" max="23"
-          oninput="this.value=this.value.replace(/[^0-9]/g,'');"
-        >
-        <span class="icon is-small is-left">
-          <i class="fas fa-headphones"></i>
-        </span>
-      </div>
-    </div>
+  <div class="control has-icons-left">
+    <input
+      @input="$emit('input',$event.target.value)"
+      @keydown="controlInput"
+      class="input is-large is-rounded is-info"
+      type="number"
+      :placeholder="input_msg"
+      width="100"
+      v-model="internalValue"
+      oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+    >
+    <span class="icon is-small is-left">
+      <i class="fas fa-headphones"></i>
+    </span>
   </div>
 </template>
 
@@ -24,7 +20,25 @@
 export default {
   name: "CountInput",
   props: {
-    input_msg: String
+    input_msg: String, 
+    value: { type: String, default: ""},
+    max: {type: Number, default: 44}
+  }, 
+  computed: {
+    internalValue: {
+      get() {return this.value},
+      set(v){ this.$emit("input", v)}
+    }
+  },
+  methods: {
+    controlInput (evt) { // prevents inputs above the maximum length. should be handled server-side too
+      if (this.value.length >= this.max) {
+        if (evt.keyCode >= 48 && evt.keyCode <= 90) {
+          evt.preventDefault()
+          return
+        }
+      } 
+    }
   }
 };
 </script>
