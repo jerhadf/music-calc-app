@@ -6,7 +6,7 @@
               <img
                 class="is-rounded"
                 style="max-width: 130px;"
-                src="..\assets\calculator_color.png"
+                src="public\img\calculator_color.png"
               >
             </figure>
         </div>
