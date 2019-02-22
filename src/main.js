@@ -5,6 +5,7 @@ import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
 import VueSpotify from 'vue-spotify'
 import Spotify from 'spotify-web-api-node'
+import axios from 'axios';
 
 Vue.config.productionTip = false
 
@@ -13,4 +14,12 @@ new Vue({
 }).$mount('#app')
 
 Vue.use(Buefy);
+Vue.use(axios);
+Vue.use({
+  install (Vue) {
+  Vue.prototype.$api = axios.create({
+    baseURL: 'http://localhost:8080/'
+  })
+}
+})
 Vue.use(VueSpotify, new Spotify())

@@ -49,7 +49,7 @@
               input_msg="How many times to listen?"
             />
           </transition>
-          <Calculate v-on:click="callSpotifyAPI"/>
+          <Calculate @click.native="callSpotifyAPI"/>
         </div>
       </div>
 
@@ -100,7 +100,7 @@ export default {
       song: "[song]",
       show_time: true,
       show_count: false,
-      API_url: "http://localhost:3100"
+      API_response: undefined
     };
   },
   methods: {
@@ -108,26 +108,28 @@ export default {
       this.show_time = !this.show_time;
       this.show_count = !this.show_count;
     },
-    callSpotifyAPI: function(event) {
-      // process artist & song name
-      alert("Getting spotify data")
-      if (event) {
-        alert(event.target.tagName)
-      }
+    callSpotifyAPI: function() {
+      // process data
       let artist = this.artist.replace(/ /g, "_");
       let track = this.song.replace(/ /g, "_");
+      if (this.show_time) {
+        let time = parseInt(this.time);
+      } else {
+        let count = parseInt(this.count);
+      }
 
-      $.ajax({
-        url: `${this.API_url}/search?artist=${artist}&track=${track}`,
-        method: "GET",
-        success: function(data) {
-          alert("Recieved data!")
-          console.log(data)
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-          alert("error " + textStatus + " " + errorThrown);
-        }
-      });
+      // get the data from the API
+      this.$api
+        .get(`search?artist=${artist}&track=${track}`)
+        .then(response => {
+          alert("Recieved response!");
+          this.API_response = response.data;
+          console.dir(response.data);
+        })
+        .catch(error => {
+          alert("Error!");
+          console.log(error);
+        });
     }
   }
 };

@@ -1,9 +1,7 @@
 <template>
-  <section>
-    <button class="button is-light is-outlined is-large">
-      <p class="btn-txt">Calculate!</p>
-    </button>
-  </section>
+  <button class="button is-light is-outlined is-large">
+    <p class="btn-txt">Calculate!</p>
+  </button>
 </template>
 
 <script>
