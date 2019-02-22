@@ -26,8 +26,9 @@ var spotifyApi = new SpotifyWebApi({
 });
 
 app.get("/search", (req, res, next) => {
-  let artist = req.query.artist;
-  let track = req.query.track;
+  // underscores in queries replaced with spaces
+  let artist = req.query.artist.replace(/_/g, " ");
+  let track = req.query.track.replace(/_/g, " ");
 
   // get an access token and use it to get data back from Spotify API
   spotifyApi
