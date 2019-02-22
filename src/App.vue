@@ -114,7 +114,7 @@ export default {
       let track = this.song.replace(/ /g, "_");
 
       $.ajax({
-        url: `${this.API_url}/search?artist=${this.artist}&track=${this.track}`,
+        url: `${this.API_url}/search?artist=${artist}&track=${track}`,
         method: "GET",
         success: function(data) {
           console.log(data);
