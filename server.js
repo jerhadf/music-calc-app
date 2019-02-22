@@ -25,7 +25,7 @@ var spotifyApi = new SpotifyWebApi({
   clientSecret: "9607248944554a3a8e48cdd6fa4aec2a"
 });
 
-app.get("/orders", (req, res, next) => {
+app.get("/search", (req, res, next) => {
   // get an access token and use it to get data back from Spotify API
   spotifyApi
     .clientCredentialsGrant()
@@ -46,8 +46,12 @@ app.get("/orders", (req, res, next) => {
       }
     )
     .then(function() {
-      spotifyApi.searchTracks("artist:Kendrick Lamar song:DNA").then(
+      spotifyApi.searchTracks("track:Alright artist:Kendrick Lamar").then(
         function(data) {
+          console.log(
+            'Search tracks by "Alright" in the track name and "Kendrick Lamar" in the artist name',
+            data.body
+          );
           res.json(data.body);
         },
         function(err) {
