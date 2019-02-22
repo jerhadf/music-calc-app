@@ -49,7 +49,7 @@
               input_msg="How many times to listen?"
             />
           </transition>
-          <Calculate @click="callSpotifyAPI"/>
+          <Calculate v-on:click="callSpotifyAPI"/>
         </div>
       </div>
 
@@ -108,8 +108,12 @@ export default {
       this.show_time = !this.show_time;
       this.show_count = !this.show_count;
     },
-    callSpotifyAPI: function() {
+    callSpotifyAPI: function(event) {
       // process artist & song name
+      alert("Getting spotify data")
+      if (event) {
+        alert(event.target.tagName)
+      }
       let artist = this.artist.replace(/ /g, "_");
       let track = this.song.replace(/ /g, "_");
 
@@ -117,7 +121,8 @@ export default {
         url: `${this.API_url}/search?artist=${artist}&track=${track}`,
         method: "GET",
         success: function(data) {
-          console.log(data);
+          alert("Recieved data!")
+          console.log(data)
         },
         error: function(jqXHR, textStatus, errorThrown) {
           alert("error " + textStatus + " " + errorThrown);
