@@ -11,10 +11,12 @@
   "dependencies": {
     "@chenfengyuan/vue-number-input": "^1.1.0",
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "buefy": "^0.7.2",
     "bulma": "^0.7.4",
     "element-ui": "^2.5.4",
     "express": "^4.16.4",
+    "serverless-http": "^1.9.1",
     "spotify-web-api-node": "^4.0.0",
     "vue": "^2.6.6",
     "vue-spotify": "^1.0.2"
