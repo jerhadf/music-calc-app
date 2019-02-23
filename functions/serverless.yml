@@ -1,0 +1,17 @@
+# serverless.yml
+
+service: music-app
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: functions/server.handler
+    path: /search
+        method: ANY
+        cors: true
+        private: true
