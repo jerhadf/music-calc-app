@@ -1,3 +1,5 @@
+import serverless from 'serverless-http'
+
 const serverless = require("serverless-http");
 const SpotifyWebApi = require("spotify-web-api-node");
 const express = require("express");
