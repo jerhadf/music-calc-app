@@ -7,9 +7,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const router = express.Router();
 
-router.get("/", (req, res) => { 
-  console.log("Hello!")
-});
 
 router.get("/search", (req, res) => {
 
@@ -61,5 +58,5 @@ router.get("/search", (req, res) => {
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 
-export default app;
-export default serverless(app);
+module.exports = app;
+module.exports.handler = serverless(app);

@@ -10,7 +10,7 @@ provider:
 
 functions:
   app:
-    handler: functions/server.handler
+    handler: functions/server
     path: /search
         method: ANY
         cors: true
