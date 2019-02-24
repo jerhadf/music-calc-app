@@ -1,27 +1,21 @@
-var SpotifyWebApi = require("spotify-web-api-node");
-var express = require("express");
+'use strict'; 
 
-// INSTRUCTIONS:
-// You'll get something like a app.js or server.js file in your app root which contains the server side code.
-// You'll need to expose some (e.g. /callSpotifyAPI) and put the usage of the API in this place.
-// From your frontend you will need to call this endpoint then (e.g. via an AJAX call).
-
+const serverless = require("serverless-http");
+const SpotifyWebApi = require("spotify-web-api-node");
+const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+const router = express.Router();
 
-app.use(express.static("public"));
 
-const port = process.env.PORT || 8080;
+router.get("/search", (req, res) => {
 
-app.listen(port, () => {
-  console.log("Listening on port " + port);
-});
+  // create instance of spotify API
+  var spotifyApi = new SpotifyWebApi({
+    clientId: "5fc39d2ee8144af88b66c4da4cf6a6a0",
+    clientSecret: "9607248944554a3a8e48cdd6fa4aec2a"
+  });
 
-var spotifyApi = new SpotifyWebApi({
-  clientId: "5fc39d2ee8144af88b66c4da4cf6a6a0",
-  clientSecret: "9607248944554a3a8e48cdd6fa4aec2a"
-});
-
-app.get("/search", (req, res, next) => {
   // underscores in queries replaced with spaces
   let artist = req.query.artist.replace(/_/g, " ");
   let track = req.query.track.replace(/_/g, " ");
@@ -61,4 +55,8 @@ app.get("/search", (req, res, next) => {
     });
 });
 
+app.use(bodyParser.json());
+app.use('/.netlify/functions/server', router);  // path must route to lambda
+
 module.exports = app;
+module.exports.handler = serverless(app);
