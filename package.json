@@ -6,8 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node functions/server.js"
-  },
+    "start": "node server-local.js",
+    "start:lambda": "netlify-lambda serve express", 
+    "build:lambda": "netlify-lambda build express"
+  }, 
   "dependencies": {
     "@chenfengyuan/vue-number-input": "^1.1.0",
     "axios": "^0.18.0",
@@ -16,6 +18,7 @@
     "bulma": "^0.7.4",
     "element-ui": "^2.5.4",
     "express": "^4.16.4",
+    "netlify-lambda": "^1.4.2",
     "serverless-http": "^1.9.1",
     "spotify-web-api-node": "^4.0.0",
     "vue": "^2.6.6",
