@@ -1,9 +1,10 @@
+'use strict'; 
+
 const serverless = require("serverless-http");
 const SpotifyWebApi = require("spotify-web-api-node");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-
 const router = express.Router();
 
 router.get("/", (req, res) => { 
@@ -60,5 +61,5 @@ router.get("/search", (req, res) => {
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 
-module.exports = app;
-module.exports.handler = serverless(app);
+export default app;
+export default serverless(app);
