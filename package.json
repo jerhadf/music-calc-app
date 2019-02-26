@@ -7,8 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "node server-local.js",
-    "start:lambda": "netlify-lambda serve express",
-    "build:lambda": "netlify-lambda build express -c webpack.config.js"
+    "start:lambda": "netlify-lambda serve src/lambda -c webpack.functions.js",
+    "build:lambda": "netlify-lambda build src/lambda -c webpack.functions.js"
   },
   "dependencies": {
     "@chenfengyuan/vue-number-input": "^1.1.0",

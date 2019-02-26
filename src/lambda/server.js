@@ -1,14 +1,14 @@
-'use strict'; 
+"use strict";
 
-const express = require("express");
-const serverless = require("serverless-http");
-const app = express();
-const bodyParser = require("body-parser");
-const SpotifyWebApi = require("spotify-web-api-node");  
+var express = require("express");
+var serverless = require("serverless-http");
+var app = express();
+var bodyParser = require("body-parser");
+var SpotifyWebApi = require("spotify-web-api-node");
 
-const router = express.Router();
+var router = express.Router();
 
-router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
+router.get("/another", (req, res) => res.json({ route: req.originalUrl }));
 
 // router.get("/", (req, res) => {
 
@@ -58,7 +58,7 @@ router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
 // });
 
 app.use(bodyParser.json());
-app.use('/.netlify/functions/server', router);  // path must route to lambda
+app.use("/.netlify/functions/server", router); // path must route to lambda
 
 module.exports = app;
 module.exports.handler = serverless(app);
