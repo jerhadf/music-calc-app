@@ -1,14 +1,13 @@
 'use strict'; 
 
-const serverless = require("serverless-http");
-const SpotifyWebApi = require("spotify-web-api-node");
 const express = require("express");
+const serverless = require("serverless-http");
 const app = express();
 const bodyParser = require("body-parser");
+const SpotifyWebApi = require("spotify-web-api-node");  
+
 const router = express.Router();
-
-
-router.get("/search", (req, res) => {
+router.get("/", (req, res) => {
 
   // create instance of spotify API
   var spotifyApi = new SpotifyWebApi({
