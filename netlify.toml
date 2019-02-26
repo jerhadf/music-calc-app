@@ -1,4 +1,0 @@
-[build]
-  Command = "npm install && npm run build"
-  Functions = "lambda"
-  Publish = "dist"
