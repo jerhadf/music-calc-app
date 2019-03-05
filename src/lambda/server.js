@@ -10,19 +10,19 @@ var router = express.Router();
 
 router.get("/another", (req, res) => res.json({ route: req.originalUrl }));
 
-// router.get("/", (req, res) => {
+router.get("/", (req, res) => {
 
-//   // create instance of spotify API
-//   var spotifyApi = new SpotifyWebApi({
-//     clientId: "5fc39d2ee8144af88b66c4da4cf6a6a0",
-//     clientSecret: "9607248944554a3a8e48cdd6fa4aec2a"
-//   });
+  // create instance of spotify API
+  var spotifyApi = new SpotifyWebApi({
+    clientId: "5fc39d2ee8144af88b66c4da4cf6a6a0",
+    clientSecret: "9607248944554a3a8e48cdd6fa4aec2a"
+  });
 
-//   // underscores in queries replaced with spaces
-//   let artist = req.query.artist.replace(/_/g, " ");
-//   let track = req.query.track.replace(/_/g, " ");
+  // underscores in queries replaced with spaces
+  let artist = req.query.artist.replace(/_/g, " ");
+  let track = req.query.track.replace(/_/g, " ");
 
-//   // get an access token and use it to get data back from Spotify API
+  return "Hello from Spotify API"
 //   spotifyApi
 //     .clientCredentialsGrant()
 //     .then(
@@ -55,7 +55,7 @@ router.get("/another", (req, res) => res.json({ route: req.originalUrl }));
 //         }
 //       );
 //     });
-// });
+});
 
 app.use(bodyParser.json());
 app.use("/.netlify/functions/server", router); // path must route to lambda
