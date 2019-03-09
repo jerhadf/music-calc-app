@@ -22,9 +22,7 @@
     "serverless-http": "^1.9.1",
     "spotify-web-api-node": "^4.0.0",
     "vue": "^2.6.6",
-    "vue-spotify": "^1.0.2"
-  },
-  "devDependencies": {
+    "vue-spotify": "^1.0.2", 
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
     "@vue/cli-service": "^3.4.0",
